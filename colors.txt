@@ -1,0 +1,2 @@
+#green color c++
+std::cout << "\033[1;32mGreen color\033[0m" << std::endl;   // Bright Green

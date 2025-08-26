@@ -83,7 +83,6 @@ auto function2 = [](void){std::cout << "thread 2 running\n";};
 ******************************************************/
 void assignament1(void)
 {
-	
 	std::string names[] = {"Abdul","Bart","Claudia","Divya"};
 	char val1 =0;
 	bool val2 =0;
