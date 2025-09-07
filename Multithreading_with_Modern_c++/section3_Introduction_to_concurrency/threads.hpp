@@ -12,14 +12,15 @@ class Threads
 
 	private:
 
-		void make_thread_single(void(*ptrfunc)());
-
 	public:
 
 		Threads(){}
 
 		// Member functions (methods) section.
 		ThreadStatus make_threads(std::vector<void(*)()> functions);
+
+		void make_thread_single(void(*ptrfunc)());
+		void make_thread_single(void(*ptrfunc)(int,int),int x,int y);
 
 		// Data Members section.
 };

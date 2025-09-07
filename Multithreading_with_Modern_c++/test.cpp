@@ -5,6 +5,8 @@
 
 void test_thread(void);
 void assignament1(void);
+void assignament_Thread_function_with_arguments(int x,int y);
+void add_two_numbers(int x,int y);
 void menu(void);
 
 int main()
@@ -25,6 +27,7 @@ void menu(void)
 		std::cout << "\nFrom the following choices pick one\n\
 									\r 1). Assignament 1\n\
 									\r 2). Test the make_threads function\n\
+									\r 3). assignament_Thread_function_with_arguments \n\
 									\r Anything else Quits the program\n";
 
 		std::cin >> assignament;
@@ -42,7 +45,13 @@ void menu(void)
 				test_thread();
 
 			break;
-	
+
+			case 3:
+
+				assignament_Thread_function_with_arguments(5,20);
+
+			break;
+
 			default:
 		
 				std::cout << "invalid input leaving now...\n";
@@ -56,8 +65,8 @@ void menu(void)
 void test_thread(void)
 {
 
-auto function1 = [](void){std::cout << "thread 1 running\n";};
-auto function2 = [](void){std::cout << "thread 2 running\n";};
+	auto function1 = [](void){std::cout << "thread 1 running\n";};
+	auto function2 = [](void){std::cout << "thread 2 running\n";};
 
 	Threads mythread;
 	
@@ -74,12 +83,12 @@ auto function2 = [](void){std::cout << "thread 2 running\n";};
 }
 
 /*****************************************************
-*@name assignament1
+*@brief assignament1
 *			if the number is divisible by 3, they say "fizz" instead of the number. If the number is divisible by 5, they say "buzz"
 *			if the number is divisible by 3 and by 5, they say "fizzbuzz"
 *
 *@param function 
-*@return void
+*@retval void
 ******************************************************/
 void assignament1(void)
 {
@@ -103,4 +112,38 @@ void assignament1(void)
 		ptrNames++;
 		if(ptrNames >= ptrNames_end){ptrNames = ptrNames_start;}
 	}
+}
+
+/*****************************************************
+*@brief assignament-Thread-function-with-arguments
+*			Write a program with a thread that receives two ints, prints their
+*			values and displays their sum.
+*@param function 
+*@retval void
+******************************************************/
+void assignament_Thread_function_with_arguments(int x,int y)
+{
+	auto lamda = [](int x,int y)
+	{
+		std::cout << "The sum of " << x << " + "<<y<<" is = " <<"\033[1;32m"<<(x+y)<< "\033[0m"<<"\n";
+	};
+
+	Threads mythread;
+	std::cout << "\n\rUsing A regular function \n";
+	mythread.make_thread_single(add_two_numbers,x,y);
+	std::cout << "\n\rUsing A functor TODO: Not available! \n";
+
+	std::cout << "\n\rUsing lamda\n";
+	mythread.make_thread_single(lamda,x,y);
+
+}
+
+/*****************************************************
+*@brief add_two_numbers.
+*@param x,y two numbers to add.
+*@retval void
+******************************************************/
+void add_two_numbers(int x,int y)
+{
+	std::cout << "The sum of " << x << " + "<<y<<" is = " <<"\033[1;32m"<<(x+y)<< "\033[0m"<<"\n";
 }

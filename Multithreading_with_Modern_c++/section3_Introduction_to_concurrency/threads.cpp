@@ -5,9 +5,9 @@
 using std::thread;
 
 /*****************************************************
-*@name make_thread_single
+*@brief make_thread_single
 *@param function 
-*@return void
+*@retval void
 ******************************************************/
 void Threads::make_thread_single(void(*ptrfunc)())
 {
@@ -16,9 +16,20 @@ void Threads::make_thread_single(void(*ptrfunc)())
 }
 
 /*****************************************************
-*@name make_threads
-*@param functions
-*@return void
+*@brief make_thread_single
+*@param x,y receives to numbers that will be added in the function.
+*@retval void
+******************************************************/
+void Threads::make_thread_single(void(*ptrfunc)(int,int),int x,int y)
+{
+	thread thread(ptrfunc,x,y);
+	thread.join();
+}
+
+/*****************************************************
+*@brief make_threads
+*@param functions receives a vector of void function pointers that receives and returns no parameters.
+*@retval thread status from @enum ThreadStatus
 ******************************************************/
 Threads::ThreadStatus Threads::make_threads(std::vector<void(*)()> functions)
 {
@@ -38,3 +49,4 @@ Threads::ThreadStatus Threads::make_threads(std::vector<void(*)()> functions)
 	}
 	return status;
 }
+
