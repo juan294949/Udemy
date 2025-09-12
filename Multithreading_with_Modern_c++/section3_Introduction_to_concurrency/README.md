@@ -35,8 +35,12 @@
   core1|L1_Cache <-------> L2_Cache \
                                      \
                                       \
-                                       |-> L3_Cache.
+                                       |-> L3_Cache <----> RAM
                                       /
                                      /
   core2|L1_Cache <-------> L2_Cache /
-  
+
+  ## Cache Controller.
+
+    - Coordinates the Caches.
+    - Monitors Caches for data changes.

@@ -1,6 +1,6 @@
 #include <vector>
 
-class Threads_2
+class Threads
 {
 	enum ThreadStatus
 	{
@@ -14,7 +14,7 @@ class Threads_2
 
 	public:
 
-		Threads_2(){}
+		Threads(){}
 
 		// Member functions (methods) section.
 		ThreadStatus make_threads(std::vector<void(*)()> functions);
